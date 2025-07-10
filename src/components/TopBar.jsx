@@ -1,4 +1,4 @@
-export default function Topbar({ children }) {
+export default function TopBar({ children }) {
   return (
     <div className="w-full h-[88px] border-b border-base-300 bg-base-100 flex items-center justify-between px-6">
       {/* Left: Text-based Logo with Gradient */}

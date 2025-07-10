@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import MainSection from "./components/MainSection";
 import SideBar from "./components/SideBar";
-import Topbar from "./components/Topbar";
+import TopBar from "./components/TopBar";
 import TutorInfo from "./components/TutorInfo";
 import ThemeSelector from "./themeSelector";
 
@@ -43,9 +43,9 @@ export default function App() {
   return (
     <div className="h-screen w-screen overflow-hidden font-[Inter,sans-serif] flex flex-col bg-base-100 text-base-content transition-colors">
       {/* 🔹 Topbar */}
-      <Topbar>
+      <TopBar>
         <ThemeSelector theme={theme} setTheme={setTheme} />
-      </Topbar>
+      </TopBar>
 
       {/* 🔹 Layout */}
       <div className="flex flex-1 min-h-0 overflow-hidden">
