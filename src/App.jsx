@@ -3,7 +3,7 @@ import MainSection from "./components/MainSection";
 import SideBar from "./components/SideBar";
 import TopBar from "./components/TopBar";
 import TutorInfo from "./components/TutorInfo";
-import ThemeSelector from "./themeSelector";
+import ThemeSelector from "./ThemeSelector";
 
 export default function App() {
   const [theme, setTheme] = useState(null); // null = not loaded yet
