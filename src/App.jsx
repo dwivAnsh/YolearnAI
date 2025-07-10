@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useEffect, useState } from "react";
+import MainSection from "./components/MainSection";
+import Sidebar from "./components/Sidebar";
+import Topbar from "./components/Topbar";
+import TutorInfo from "./components/TutorInfo";
+import ThemeSelector from "./themeSelector";
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [theme, setTheme] = useState(null); // null = not loaded yet
+  const [isLoading, setIsLoading] = useState(true);
 
+  // Get theme from localStorage
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme") || "light";
+    setTheme(storedTheme);
+
+    // Show loader for minimum 1.2s
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 1200);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Apply theme when ready
+  useEffect(() => {
+    if (theme !== null) {
+      document.documentElement.setAttribute("data-theme", theme);
+      localStorage.setItem("theme", theme);
+    }
+  }, [theme]);
+
+  // Loading screen
+  if (isLoading) {
+    return (
+      <div className="h-screen w-screen flex items-center justify-center bg-base-100 text-primary text-3xl">
+        <i className="ri-loader-2-line animate-spin" />
+      </div>
+    );
+  }
+
+  // Main App
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div className="h-screen w-screen overflow-hidden font-[Inter,sans-serif] flex flex-col bg-base-100 text-base-content transition-colors">
+      {/* 🔹 Topbar */}
+      <Topbar>
+        <ThemeSelector theme={theme} setTheme={setTheme} />
+      </Topbar>
 
-export default App
+      {/* 🔹 Layout */}
+      <div className="flex flex-1 min-h-0 overflow-hidden">
+        <Sidebar />
+        <div className="flex-1 overflow-auto">
+          <MainSection />
+        </div>
+        <TutorInfo />
+      </div>
+    </div>
+  );
+}
