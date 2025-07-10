@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import MainSection from "./components/MainSection";
-import Sidebar from "./components/Sidebar";
+import SideBar from "./components/SideBar";
 import Topbar from "./components/Topbar";
 import TutorInfo from "./components/TutorInfo";
 import ThemeSelector from "./themeSelector";
@@ -49,7 +49,7 @@ export default function App() {
 
       {/* 🔹 Layout */}
       <div className="flex flex-1 min-h-0 overflow-hidden">
-        <Sidebar />
+        <SideBar />
         <div className="flex-1 overflow-auto">
           <MainSection />
         </div>

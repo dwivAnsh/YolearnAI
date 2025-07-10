@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { menuItems, shortcuts } from "../constants/menuItems";
 
-export default function Sidebar() {
+export default function SideBar() {
   const [activeItem, setActiveItem] = useState("Learn");
 
   return (
