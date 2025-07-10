@@ -1,12 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import daisyui from 'daisyui'; 
 
-// ✅ FIX: DaisyUI config must go here 👇
 const tailwindOptions = {
-  plugins: [
-    require('daisyui')
-  ],
+  plugins: [daisyui],
   daisyui: {
     themes: [
       "light", "dark", "cupcake", "bumblebee", "emerald", "corporate", "synthwave",
